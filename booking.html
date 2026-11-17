@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронирование - Отель Мечты</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Простой скрипт для вывода сообщения при успешной отправке
+        function submitForm(event) {
+            event.preventDefault(); // Отменяем реальную отправку
+            alert("Заявка успешно отправлена! Администратор свяжется с вами.");
+            window.location.href = "index.html"; // Возврат на главную
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>Отель "Мечты"</h1>
+            <p>Ваш идеальный отдых начинается здесь!</p>
+        </div>
+        <nav>
+            <a href="index.html">Главная</a>
+            <a href="catalog.html">Каталог</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align: center;">Бронирование номера</h2>
+        
+        <form onsubmit="submitForm(event)">
+            <div class="form-group">
+                <label>Имя *</label>
+                <!-- Валидация: только кириллица, пробелы, точки, тире -->
+                <input type="text" required pattern="[А-Яа-яЁё\s\.\-]+" title="Только русские буквы, пробелы, точки и тире">
+            </div>
+            
+            <div class="form-group">
+                <label>Фамилия *</label>
+                <input type="text" required pattern="[А-Яа-яЁё\s\.\-]+" title="Только русские буквы, пробелы, точки и тире">
+            </div>
+            
+            <div class="form-group">
+                <label>Телефон *</label>
+                <!-- Валидация формата +7(XXX)XXX-XX-XX -->
+                <input type="tel" required placeholder="+7(999)123-45-67" pattern="\+7\(\d{3}\)\d{3}-\d{2}-\d{2}" title="Формат: +7(XXX)XXX-XX-XX">
+            </div>
+            
+            <div class="form-group">
+                <label>E-mail *</label>
+                <input type="email" required placeholder="example@mail.ru">
+            </div>
+            
+            <div class="form-group">
+                <label>Дата заезда * (ДД.ММ.ГГГГ)</label>
+                <!-- Просим ввести вручную для соблюдения формата из задания -->
+                <input type="text" required placeholder="01.01.2024" pattern="\d{2}\.\d{2}\.\d{4}" title="Введите дату в формате ДД.ММ.ГГГГ">
+            </div>
+            
+            <div class="form-group">
+                <label>Дата выезда * (ДД.ММ.ГГГГ)</label>
+                <input type="text" required placeholder="05.01.2024" pattern="\d{2}\.\d{2}\.\d{4}" title="Введите дату в формате ДД.ММ.ГГГГ">
+            </div>
+            
+            <button type="submit" class="btn">Отправить заявку</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>Адрес: г. Москва, ул. Пушкина, д. 1 | Режим работы: Круглосуточно | Тел: +7(999)123-45-67 | E-mail: info@hotel-dreams.ru</p>
+    </footer>
+</body>
+</html>
